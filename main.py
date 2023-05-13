@@ -9,6 +9,7 @@ import webbrowser
 import os
 import pywhatkit as kit
 import smtplib as smt
+import datetime
 
 
 engine = pyttsx3.init('sapi5')
@@ -22,7 +23,7 @@ print(voices[1].id)
 
 
 
-author = "Saqlain"
+author = "Boss"
 
 def speak(audio):
     engine.say(audio)
@@ -86,6 +87,11 @@ if __name__ == "__main__":
                 print(article['description'])
                 speak(article['description'])
                 speak("Do you want to read more?")
+        
+        elif 'time' in query:
+            strTime = datetime.datetime.now().strftime("%H:%M:%S")
+            speak(f"Sir the time is {strTime}")
+        
         
         elif 'open google' in query:
             webbrowser.open("https://www.google.com")
